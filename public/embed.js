@@ -8,7 +8,7 @@
     botName: scriptTag.getAttribute("data-bot-name") || "AI Consultant",
     botAvatar:
       scriptTag.getAttribute("data-bot-avatar") ||
-      "aifundfrontend-eight.vercel.app/default-bot.png",
+      "https://aifundfrontend-eight.vercel.app/default-bot.png",
     welcomeMsg:
       scriptTag.getAttribute("data-welcome-msg") ||
       "Hello! How can I help you today?",
