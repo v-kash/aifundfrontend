@@ -5,6 +5,7 @@ import { Message, CustomerProfile } from '@/types/chat';
 import ReactMarkdown from 'react-markdown';
 
 const API_BASE_URL = '/api/v1';
+const CLIENT_ID = 'test_client_1';
 // Inline SVG Icons (No external dependencies needed)
 const IconUser = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -78,7 +79,9 @@ export default function Home() {
     try {
       const res = await fetch(`${API_BASE_URL}/chat/start`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 
+          'X-Client-ID': CLIENT_ID,
+        },
       });
       const data = await res.json();
       setConversationId(data.conversation_id);
@@ -101,7 +104,7 @@ export default function Home() {
     try {
       const res = await fetch(`${API_BASE_URL}/chat/${conversationId}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json','X-Client-ID': CLIENT_ID, },
         body: JSON.stringify({ message: userMessage }),
       });
       const data = await res.json();
